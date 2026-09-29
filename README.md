@@ -57,6 +57,7 @@ The project combines several mathematical and algorithmic concepts:
 
 * **Euclidean and computational geometry**
 * **Circle–circle, circle–line, and line–line intersection algorithms**
+* **Parallelized numerical computations and matrix operations**
 * **Complex-number representation of planar geometry**
 * **Combinatorial analysis of the construction space**
 * **Symmetry reduction**
@@ -66,10 +67,9 @@ The project combines several mathematical and algorithmic concepts:
 * **Depth-first search and recursive backtracking**
 * **Combinatorial search-space reduction and pruning**
 
-A major challenge is the rapid growth of the construction space with increasing construction depth. The number of possible constructions can become extremely large even after only a few steps. Therefore, a significant part of the algorithm is dedicated to **estimating the growth of the search space and eliminating redundant or equivalent constructions as early as possible**.
+A major challenge is the rapid growth of the construction space with increasing construction depth. The number of possible constructions can become extremely large even after only a few steps. Therefore, a significant part of the algorithm is dedicated to **analyzing the growth of the search space and eliminating redundant or equivalent constructions as early as possible**.
 
-The combination of geometric algorithms, combinatorial search, and machine-learning-based guidance allows the project to explore construction spaces that would be impractical to investigate manually.
-
+In addition, the individual computational steps were extensively optimized for performance. This includes **vectorized and parallelized numerical computations, efficient intersection algorithms, preallocation of memory, and minimizing unnecessary calculations**. These optimizations are essential because even relatively small improvements in the runtime of an individual operation can have a substantial impact when the operation is executed millions of times throughout the search.
 
 ---
 
@@ -83,13 +83,15 @@ The search starts from a small predefined configuration of points, circles, and/
 
 Symmetries of the initial configuration are exploited to reduce the number of independent starting cases.
 
-### 2. Generate possible geometric objects
+### 2. Generate Possible Geometric Objects and Evaluate with a Neural Network
 
-At each depth, the algorithm considers possible new constructions.
+At each construction depth, the algorithm generates possible new geometric objects based on the objects constructed so far.
 
-For circles, different combinations of previously constructed points and distances are examined.
+For circles, different combinations of previously constructed points and distances are considered. In the compass-and-ruler extension, pairs of previously constructed points can additionally be connected to form infinite lines.
 
-For the ruler-based extension, pairs of points can additionally be connected to form lines.
+Since the number of possible constructions grows rapidly, evaluating every possible option with the same computational effort would quickly become impractical. Instead, the **neural network evaluates a selected subset of promising construction options** and estimates their potential to lead to good approximations.
+
+The search can then prioritize the most promising candidates, significantly reducing the amount of the construction space that needs to be explored in depth.
 
 ### 3. Compute intersections
 
