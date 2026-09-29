@@ -1,6 +1,6 @@
 # Approximations-with-Straightedge-and-Compass
 
-This project investigates how classical geometric constructions can be used to approximate mathematical quantities that cannot, in general, be constructed exactly with straightedge and compass.
+This project investigates how classical geometric constructions can be used to approximate mathematical quantities that cannot be constructed exactly with straightedge and compass.
 
 The project combines **computational geometry, numerical optimization, symbolic computation, and algorithmic search**. Starting from a small set of elementary geometric objects, the program systematically explores possible constructions and searches for configurations that produce highly accurate approximations of selected mathematical quantities.
 
@@ -18,7 +18,7 @@ Rather than using conventional numerical approximation methods such as Newton's 
 
 The following visualization shows one of the best constructions found by the computational search.
 
-![Best geometric construction](images/best_construction.png)
+<img width="2252" height="798" alt="Image" src="https://github.com/user-attachments/assets/24f4f7d2-affd-4a58-92c6-d9a87afcbaba" />
 
 ---
 
