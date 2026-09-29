@@ -1,0 +1,19 @@
+===============================================
+RUN FINISHED IN TIME: 
+8257 seconds 
+    started at time: 2026_06_08_15_09_42 
+RUN DATA: 
+ Constructions evaluated: 36171625 
+ Unique distances computed: 10160227126 
+===============================================
+RUN PARAMETERS: 
+ maxDepth: 8 
+ branch: 3 
+ tolTarget: 1.000000e-08 
+ tol: 1.000000e-10 
+ maxStored: 50 
+ targets: 
+         sqrtpi, promising constructions: 26 
+         cuberoot2, promising constructions: 22 
+         heptagon, promising constructions: 24 
+ ===============================================
