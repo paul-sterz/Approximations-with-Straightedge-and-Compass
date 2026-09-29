@@ -26,53 +26,50 @@ The following visualization shows one of the best constructions found by the com
 
 ## Programming & Tools
 
-The project was primarily implemented in **MATLAB**.
+The project was primarily implemented in **MATLAB**, with **Python** used for machine-learning-based search guidance.
 
-The main tools and techniques used are:
+The main tools and techniques include:
 
-* **MATLAB** for the numerical search, geometric computations, data management, and visualization
-* **Symbolic Math Toolbox** for exact/symbolic verification of promising constructions
-* **Complex numbers** for representing points in the Euclidean plane
+* **MATLAB** for the numerical search, computational geometry, data management, and visualization
+* **MATLAB Symbolic Math Toolbox** for exact symbolic evaluation and independent verification of promising constructions
+* **Python** for developing a **neural network** that evaluates constructions and guides the search towards promising regions of the construction space
 * **Git/GitLab** for version control and experiment management
-* Numerical tolerance handling for robust geometric comparisons
-* Depth-first search with backtracking for exploring the construction space
-
-The use of complex numbers provides a compact representation of planar geometry: a point $(x,y)$ is represented as the complex number $x+iy$.
 
 ---
 
 ## Mathematical & Algorithmic Foundations
 
-The core of the project is a **depth-first search through a discrete construction space**.
+The core of the project is a **depth-first search through a discrete geometric construction space**.
 
-A construction is represented by a collection of:
+Each construction is represented by a collection of:
 
 * points
 * circles
 * lines
-* distances
+* constructible distances
 * intersections between geometric objects
 
-For circles, the center is represented by a previously constructed point and the radius by a previously constructed distance. In the extended compass-and-ruler setting, previously constructed distances can also be reused as radii independently of their original location.
+In the compass-with-memory setting, previously constructed distances can be reused as radii independently of the location where they were originally constructed. The ruler additionally allows any two constructed points to be connected by an infinite line.
 
-The algorithm generates new geometric objects, computes their intersections, removes geometrically equivalent objects and points, and recursively continues the construction.
+The algorithm recursively generates new geometric objects, computes their intersections, filters redundant constructions, and explores the resulting branches using **depth-first search with backtracking**.
 
-Several mathematical concepts are therefore combined:
+The project combines several mathematical and algorithmic concepts:
 
-* Euclidean geometry
-* Circle-circle intersections
-* Circle-line intersections
-* Line-line intersections
-* Complex-number geometry
-* Normal forms of lines
-* Distance geometry
-* Symmetry reduction
-* Numerical tolerance and stability
-* Symbolic computation
-* Depth-first search and backtracking
-* Combinatorial search-space reduction
+* **Euclidean and computational geometry**
+* **Circle–circle, circle–line, and line–line intersection algorithms**
+* **Complex-number representation of planar geometry**
+* **Combinatorial analysis of the construction space**
+* **Symmetry reduction**
+* **Numerical precision, tolerances, and stability**
+* **Symbolic computation for independent verification**
+* **Neural networks for construction evaluation and search guidance**
+* **Depth-first search and recursive backtracking**
+* **Combinatorial search-space reduction and pruning**
 
-A central challenge is that the number of possible constructions grows extremely rapidly with construction depth. Consequently, a substantial part of the project is devoted to eliminating redundant constructions before they are explored further.
+A major challenge is the rapid growth of the construction space with increasing construction depth. The number of possible constructions can become extremely large even after only a few steps. Therefore, a significant part of the algorithm is dedicated to **estimating the growth of the search space and eliminating redundant or equivalent constructions as early as possible**.
+
+The combination of geometric algorithms, combinatorial search, and machine-learning-based guidance allows the project to explore construction spaces that would be impractical to investigate manually.
+
 
 ---
 
