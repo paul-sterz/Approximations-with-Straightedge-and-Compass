@@ -151,70 +151,28 @@ This makes it possible to independently evaluate the final construction and dist
 
 # 🧠 What I Learned
 
-This project gave me practical experience at the intersection of **mathematics, algorithms, and computational geometry**.
+This project gave me practical experience at the intersection of **mathematics, algorithms, computational geometry, and machine learning**.
 
-In particular, I worked with:
+In particular, I gained experience with:
 
 * Designing algorithms for large combinatorial search spaces
-* Implementing geometric algorithms from mathematical definitions
+* Implementing geometric algorithms directly from mathematical definitions
 * Representing Euclidean geometry using complex numbers
-* Numerical stability and tolerance selection
-* Efficient duplicate detection
+* Handling numerical precision, stability, and tolerance selection
+* Efficient duplicate and equivalence detection
 * Depth-first search and recursive backtracking
 * Memory management for computationally intensive searches
-* Symmetry reduction
-* Symbolic and numerical computation
+* Designing and integrating a neural network for evaluating construction steps
+* Symmetry reduction and search-space pruning
+* Combining symbolic and numerical computation
 * Profiling and optimizing computational bottlenecks
-* Structuring long-running numerical experiments
+* Structuring and monitoring long-running numerical experiments
 * Visualizing and interpreting computationally generated geometric constructions
 
-One of the main lessons was that mathematically simple operations can become computationally expensive when they are embedded in a large search space. Consequently, the efficiency of the **search strategy and pruning mechanisms** can be just as important as the underlying geometric computations.
+One of the main lessons was that mathematically simple operations can become computationally expensive when embedded in a large search space. As a result, the efficiency of the **search strategy, pruning mechanisms, and individual computational operations** can be just as important as the underlying mathematical algorithms.
 
-The project also provided experience in connecting abstract mathematical ideas with concrete computational implementations.
+The project also taught me how to translate **abstract mathematical concepts into robust computational algorithms** and how to iteratively improve those algorithms based on profiling, performance measurements, and practical computational constraints.
 
----
-
-# 🚀 How It Can Be Improved
-
-There are several possible directions for further development.
-
-### More efficient search strategies
-
-The current approach relies primarily on depth-first search. More advanced search strategies could prioritize promising constructions instead of exploring branches largely independently.
-
-Possible approaches include:
-
-* heuristic search
-* beam search
-* randomized search
-* evolutionary algorithms
-* machine-learning-based branch prioritization
-
-### Better symmetry reduction
-
-Additional geometric symmetries could potentially be detected automatically rather than handled primarily through predefined symmetry-reduced starting configurations.
-
-This could substantially reduce the search space at greater construction depths.
-
-### Parallelization
-
-The search naturally contains independent branches that can potentially be distributed across multiple CPU cores or machines.
-
-A larger-scale distributed implementation could allow significantly deeper searches.
-
-### Improved symbolic verification
-
-The symbolic verification step is computationally expensive for complicated constructions. More specialized algebraic representations or delayed symbolic evaluation could make verification substantially faster.
-
-### Extended construction systems
-
-The framework could be expanded to investigate additional geometric construction models, for example:
-
-* compass-only constructions
-* straightedge-only constructions
-* compass with memory
-* additional reusable geometric quantities
-* higher-dimensional geometric constructions
 
 ---
 
@@ -230,7 +188,7 @@ The framework could be expanded to investigate additional geometric construction
 The numerical search can be started by calling the main function with a maximum construction depth and a starting configuration:
 
 ```matlab
-mainFinalV3(maxDepth, n)
+mainOnlyCompass(maxDepth, n)
 ```
 
 where:
@@ -256,30 +214,3 @@ where `data_num` describes a numerically discovered construction.
 
 The resulting symbolic representation can be used to independently evaluate the construction and verify the numerical approximation.
 
----
-
-## Project Structure
-
-A typical workflow consists of:
-
-```text
-Initialization
-      ↓
-Generate geometric objects
-      ↓
-Calculate intersections
-      ↓
-Remove duplicates / symmetries
-      ↓
-Add new points and distances
-      ↓
-Evaluate target approximations
-      ↓
-Store promising constructions
-      ↓
-Symbolic verification
-      ↓
-Visualization
-```
-
-The project is intended as an exploration of how **classical geometric construction problems can be approached algorithmically** and how computational search can uncover highly accurate geometric approximations that would be difficult to find manually.
